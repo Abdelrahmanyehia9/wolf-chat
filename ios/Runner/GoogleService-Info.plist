@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>744313187921-dql0tjokhgibhontemm6pbcrl4ks5a87.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.744313187921-dql0tjokhgibhontemm6pbcrl4ks5a87</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBlmOJkNJXMP07RE6wGhl_Pporf0ozSeik</string>
+	<key>GCM_SENDER_ID</key>
+	<string>744313187921</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.untitled</string>
+	<key>PROJECT_ID</key>
+	<string>wolf-chat-83652</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wolf-chat-83652.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:744313187921:ios:a8b7371b6a545174d65270</string>
+</dict>
+</plist>
