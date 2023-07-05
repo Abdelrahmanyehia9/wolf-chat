@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:go_router/go_router.dart';
 import 'package:untitled/constant.dart';
-import 'package:untitled/core/utils/app_router.dart';
 import 'package:untitled/core/utils/dimention.dart';
 import 'package:untitled/core/widget/custom_text_formfiield.dart';
 import 'package:untitled/features/auth/presentation/manger/auth_cubit.dart';
 import 'package:untitled/features/auth/presentation/manger/auth_states.dart';
+import 'package:untitled/features/auth/presentation/signup/view/sign_up_view.dart';
 import 'package:untitled/features/chat/presentation/view/chat_view.dart';
 import 'custom_buttom.dart';
 import 'toggle_auth_button.dart';
@@ -25,7 +24,7 @@ class LoginViewBody extends StatelessWidget {
       listener: (BuildContext context, state) {
         if (state is AuthSuccess) {
           isLoading = false;
-          GoRouter.of(context).push(AppRouter.chat);
+          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) =>ChatView()), (route) => false );
         } else if (state is AuthFailure) {
           isLoading = false;
           Fluttertoast.showToast(
@@ -79,7 +78,6 @@ class LoginViewBody extends StatelessWidget {
                           .loginByEmailAndPassword(
                               email: _emailController.text.trim(),
                               password: _passwordController.text);
-                      GoRouter.of(context).pushReplacement(AppRouter.chat) ;
                     }
                   },
                 ),
@@ -90,8 +88,7 @@ class LoginViewBody extends StatelessWidget {
                     text1: "Don't Have an Account ? ",
                     text2: "Sign up  ",
                     onPress: () {
-                      GoRouter.of(context).push(AppRouter.signUp);
-                    }),
+Navigator.push(context, MaterialPageRoute(builder: (_) => SignUPView()));                    }),
               ],
             ),
           ),

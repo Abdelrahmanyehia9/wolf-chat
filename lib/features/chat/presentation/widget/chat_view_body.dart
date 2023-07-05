@@ -1,11 +1,16 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:untitled/constant.dart';
 import 'package:untitled/core/utils/dimention.dart';
 import 'package:untitled/features/chat/data/model/message_model.dart';
 import 'package:untitled/features/chat/presentation/widget/error_loading_chats.dart';
 import 'package:untitled/features/chat/presentation/widget/no_chats_have.dart';
+import 'package:uuid/uuid.dart';
 
 import 'chat_bubble.dart';
 
@@ -74,7 +79,12 @@ class _ChatViewBodyState extends State<ChatViewBody> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Icon(Icons.attach_file, color: Colors.white),
+            InkWell(onTap: (){
+
+
+
+            },
+                child: const Icon(Icons.image, color: Colors.white)),
             SizedBox(
               width: dimWidth(context) * 0.7,
               child: TextFormField(

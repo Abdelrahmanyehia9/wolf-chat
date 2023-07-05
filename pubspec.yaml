@@ -46,6 +46,10 @@ dependencies:
   modal_progress_hud_nsn:
   cloud_firestore: ^4.8.2
   shared_preferences: ^2.2.0
+  restart_app:
+  image_picker: ^1.0.0
+  firebase_storage: ^11.2.4
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:

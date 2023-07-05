@@ -5,11 +5,11 @@ import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:untitled/constant.dart';
-import 'package:untitled/core/utils/app_router.dart';
 import 'package:untitled/core/utils/dimention.dart';
 import 'package:untitled/core/widget/custom_text_formfiield.dart';
 import 'package:untitled/features/auth/presentation/manger/auth_states.dart';
 
+import '../../../../chat/presentation/view/chat_view.dart';
 import '../../login/widgets/custom_buttom.dart';
 import '../../login/widgets/toggle_auth_button.dart';
 import '../../manger/auth_cubit.dart';
@@ -50,7 +50,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
       listener: (context, state) {
         if (state is AuthSuccess) {
           isLoading = false;
-          GoRouter.of(context).push(AppRouter.chat);
+          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) =>ChatView()), (route) => false );
         } else if (state is AuthFailure) {
           isLoading = false;
           Fluttertoast.showToast(msg: state.error);

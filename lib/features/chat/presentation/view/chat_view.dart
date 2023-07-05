@@ -1,5 +1,10 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:restart_app/restart_app.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled/constant.dart';
 import 'package:untitled/features/chat/presentation/widget/chat_view_body.dart';
 
@@ -18,7 +23,7 @@ class ChatView extends StatelessWidget {
           Icons.arrow_back,
           color: Colors.white,
         ),
-        title: const Text("isabel"),
+        title: const Text("Brossly"),
         actions: [
           const Icon(Icons.camera_alt),
           const SizedBox(
@@ -47,6 +52,16 @@ class ChatView extends StatelessWidget {
                 ),
                 const PopupMenuItem(
                   child: Text("Block"),
+                ) ,
+                 PopupMenuItem(
+                   onTap:()async{
+                     await FirebaseAuth.instance.signOut();
+                     SharedPreferences pref = await SharedPreferences.getInstance();
+                     pref.setBool(isLogin, false) ;
+                     Restart.restartApp();
+
+                   },
+                  child: Text("Log out"),
                 )
               ];
             },
