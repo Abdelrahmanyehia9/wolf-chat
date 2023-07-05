@@ -14,23 +14,43 @@ import '../../login/widgets/custom_buttom.dart';
 import '../../login/widgets/toggle_auth_button.dart';
 import '../../manger/auth_cubit.dart';
 
-class SignUpViewBody extends StatelessWidget {
-  final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
-  bool isLoading = false;
+class SignUpViewBody extends StatefulWidget {
 
   SignUpViewBody({Key? key}) : super(key: key);
+
+  @override
+  State<SignUpViewBody> createState() => _SignUpViewBodyState();
+}
+
+class _SignUpViewBodyState extends State<SignUpViewBody> {
+  final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
+
+  bool isLoading = false;
+
   final TextEditingController _usernameController = TextEditingController();
+
   final TextEditingController _cPasswordController = TextEditingController();
+
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
 
+
+  @override
+  void dispose() {
+    _usernameController.dispose() ;
+    _cPasswordController.dispose() ;
+    _emailController.dispose() ;
+    _passwordController.dispose() ;
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthStates>(
       listener: (context, state) {
         if (state is AuthSuccess) {
           isLoading = false;
-          GoRouter.of(context).push(AppRouter.home);
+          GoRouter.of(context).push(AppRouter.chat);
         } else if (state is AuthFailure) {
           isLoading = false;
           Fluttertoast.showToast(msg: state.error);
@@ -87,6 +107,7 @@ class SignUpViewBody extends StatelessWidget {
                           _cPasswordController.text) {
                         BlocProvider.of<AuthCubit>(context)
                             .signUpUsingEmailAndPassword(
+                                username: _usernameController.text.trim(),
                                 email: _emailController.text.trim(),
                                 password: _passwordController.text);
                       } else {
@@ -104,7 +125,6 @@ class SignUpViewBody extends StatelessWidget {
                   text1: "Have Account already ! ",
                   text2: "Login ",
                   onPress: () {
-                    GoRouter.of(context).push(AppRouter.logIn);
                   },
                 ),
               ],

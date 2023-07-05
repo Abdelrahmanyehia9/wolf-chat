@@ -1,10 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:untitled/constant.dart';
+import 'package:untitled/core/utils/dimention.dart';
+import 'package:untitled/features/chat/data/model/message_model.dart';
 
 class ChatBubble extends StatelessWidget {
-  const ChatBubble({Key? key}) : super(key: key);
-
+  const ChatBubble({Key? key, required this.messageModel,}) : super(key: key);
+final MessageModel messageModel ;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,12 +21,13 @@ class ChatBubble extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-              margin: const EdgeInsets.all(16),
-              decoration: BoxDecoration(gradient: myGradient),
-              child: const Text(
-                "hey sir , how are you today?",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+              margin: const EdgeInsets.all(10),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),
+                  gradient: myGradient),
+              child:  Text(
+                messageModel.text ,
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -35,20 +38,29 @@ class ChatBubble extends StatelessWidget {
 }
 
 class ChatBubble2 extends StatelessWidget {
-  const ChatBubble2({Key? key}) : super(key: key);
-
+  const ChatBubble2({Key? key, required this.messageModel}) : super(key: key);
+final MessageModel messageModel ;
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerRight,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-        margin: const EdgeInsets.all(16),
-        decoration: BoxDecoration(color: Colors.grey.shade800),
-        child: const Text(
-          "hey sir , how are you today?",
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          SizedBox(width: dimWidth(context)*0.6,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+              margin: const EdgeInsets.all(10),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),
+                  color: Colors.grey.shade800),
+              child:  Text(
+                messageModel.text,
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          Text(messageModel.time.toDate().toLocal().toString().substring(10,16) , style: TextStyle(fontSize: 10),)
+        ],
       ),
     );
   }

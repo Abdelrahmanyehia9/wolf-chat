@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/constant.dart';
 import 'package:untitled/features/chat/presentation/widget/chat_view_body.dart';
 
+import '../../../../core/utils/helper.dart';
 class ChatView extends StatelessWidget {
-  const ChatView({Key? key}) : super(key: key);
+   ChatView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,17 +31,21 @@ class ChatView extends StatelessWidget {
               // your logic
             },
             itemBuilder: (BuildContext bc) {
-              return const [
+
+              return  [
                 PopupMenuItem(
-                  child: Text("remove chat"),
+                  onTap: (){
+                    deleteChat() ;
+                  },
+                  child: const Text("remove chat"),
                 ),
-                PopupMenuItem(
+                const PopupMenuItem(
                   child: Text("search"),
                 ),
-                PopupMenuItem(
+                const PopupMenuItem(
                   child: Text("Add Friend"),
                 ),
-                PopupMenuItem(
+                const PopupMenuItem(
                   child: Text("Block"),
                 )
               ];
@@ -47,7 +53,7 @@ class ChatView extends StatelessWidget {
           )
         ],
       ),
-      body: const ChatViewBody(),
+      body:  ChatViewBody(),
     );
   }
 }

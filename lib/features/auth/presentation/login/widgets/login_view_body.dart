@@ -8,6 +8,7 @@ import 'package:untitled/core/utils/dimention.dart';
 import 'package:untitled/core/widget/custom_text_formfiield.dart';
 import 'package:untitled/features/auth/presentation/manger/auth_cubit.dart';
 import 'package:untitled/features/auth/presentation/manger/auth_states.dart';
+import 'package:untitled/features/chat/presentation/view/chat_view.dart';
 import 'custom_buttom.dart';
 import 'toggle_auth_button.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -24,7 +25,7 @@ class LoginViewBody extends StatelessWidget {
       listener: (BuildContext context, state) {
         if (state is AuthSuccess) {
           isLoading = false;
-          GoRouter.of(context).push(AppRouter.home);
+          GoRouter.of(context).push(AppRouter.chat);
         } else if (state is AuthFailure) {
           isLoading = false;
           Fluttertoast.showToast(
@@ -78,6 +79,7 @@ class LoginViewBody extends StatelessWidget {
                           .loginByEmailAndPassword(
                               email: _emailController.text.trim(),
                               password: _passwordController.text);
+                      GoRouter.of(context).pushReplacement(AppRouter.chat) ;
                     }
                   },
                 ),

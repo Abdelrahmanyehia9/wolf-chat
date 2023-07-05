@@ -44,6 +44,8 @@ dependencies:
   flutter_bloc: ^8.1.3
   fluttertoast: ^8.2.2
   modal_progress_hud_nsn:
+  cloud_firestore: ^4.8.2
+  shared_preferences: ^2.2.0
 
 dev_dependencies:
   flutter_test:

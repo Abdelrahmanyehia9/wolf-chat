@@ -9,3 +9,6 @@ begin: Alignment.topRight,
 end: Alignment.bottomLeft,
 colors: [Colors.orange.shade300, Colors.orange.shade800],
 ) ;
+String collectionOfMessages = "messages";
+const String createdTime = "time" ;
+const String isLogin = "islogin" ;
